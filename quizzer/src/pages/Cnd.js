@@ -60,7 +60,7 @@ export default function Cnd() {
         <h1>Candidates</h1>
         <div className={classes.tableHeadlineButtonSec}>
           <Link to="cnd/new"><button className={classes.tableHeadlineButton}>New</button></Link>
-          <button className={classes.tableHeadlineButton}>Archive</button>
+          {/* <button className={classes.tableHeadlineButton}>Archive</button> */}
         </div>
       </div>
         <TableContainer component={Paper}>

@@ -81,7 +81,7 @@ app.get('/allcnd', (req, res) => {
   res.json([
       {
         cid: '01',
-        fullname: "chani arad",
+        fullname: "yael arad",
         id: '015783658',
         status: 'candidate',
         performed: 2,
@@ -138,6 +138,10 @@ app.post('/newrps', (req, res) => {
   res.json({rid: 5})
 })
 
+app.post('/newexm', (req, res) => {
+  res.json({eid: 5})
+})
+
 app.get('/exm/:eid', (req, res) => {
   res.json(
     {
@@ -161,7 +165,7 @@ app.get('/exm/:eid', (req, res) => {
         {
           rid: '03',
           title: "react",
-          elected: true
+          elected: false
         },
         {
           rid: '04',
@@ -172,10 +176,12 @@ app.get('/exm/:eid', (req, res) => {
       performed: [
         {
           fullname: 'rachel taub',
-          score: 75
+          cid: '01',
+          score: '75'
         }, {
           fullname: 'ayala izakov',
-          score: 90
+          cid: '02',
+          score: '90'
         }
       ] 
     }
@@ -195,19 +201,19 @@ app.get('/cnd/:cid', (req, res) => {
         performed: [
           {
             title: 'node',
-            eid: '05',
+            eid: '01',
             grade: 70
           },
           {
             title: 'html/css',
-            eid: '01',
+            eid: '04',
             grade: 90
           }
         ],
         toTake: [
           {
             title: 'react',
-            eid: '04'
+            eid: '03'
           },
           {
             title: 'javascript',
@@ -225,6 +231,12 @@ app.post('/rps/:rid', (req, res) => {
 })
 
 app.post('/cnd/:cid', (req, res) => {
+  const a = req.body
+  console.log(a)
+  res.send('done')
+})
+
+app.post('/exm/:eid', (req, res) => {
   const a = req.body
   console.log(a)
   res.send('done')

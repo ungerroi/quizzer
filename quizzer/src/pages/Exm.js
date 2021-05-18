@@ -33,7 +33,7 @@ export default function Exm() {
 
   const history = useHistory()
   
-  const rowLink = (eid) => {
+  const hyperLink = (eid) => {
     history.push(`./exm/${eid}`)
   }
 
@@ -47,14 +47,32 @@ export default function Exm() {
       })
   }, [])
 
+  const createNewExmModal = () => {
+    // please replace with an html modal
+    const title = prompt('New Exam Name:')
+    if (title) {
+      const options = {
+        method: 'POST',
+        body: JSON.stringify({title: title}),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }
+      fetch('http://localhost:4000/newexm', options)
+        .then($ => $.json())
+        .then($ => hyperLink(`./${$.eid}`))
+    }
+  }
+
   return (
     <div className={classes.table} >
       <div className={classes.tableHeadline}>
         <h1>Exams</h1>
         <div className={classes.tableHeadlineButtonSec}>
-          <Link to="exm/new"><button className={classes.tableHeadlineButton}>New</button></Link>
-          <button className={classes.tableHeadlineButton}>Archive</button>
-          <button className={classes.tableHeadlineButton}>Defaults</button>
+          <button onClick={() => createNewExmModal()} className={classes.tableHeadlineButton}>New</button>
+          {/* <button className={classes.tableHeadlineButton}>Archive</button> */}
+          <Link to="/adm/def"><button className={classes.tableHeadlineButton}>Defaults</button></Link>
         </div>
       </div>
       <TableContainer component={Paper}>
@@ -69,7 +87,7 @@ export default function Exm() {
         </TableHead>
         <TableBody>
         {exmList.map((row, i) => (
-              <TableRow key={i} onClick={() => {rowLink(`./${row.eid}`)}}>
+              <TableRow key={i} onClick={() => {hyperLink(`./${row.eid}`)}}>
               <TableCell component="th" scope="row">
                   {row.title}
               </TableCell>

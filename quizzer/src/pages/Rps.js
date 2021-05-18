@@ -34,7 +34,7 @@ export default function Rps() {
   const classes = useStyles();
 
   const history = useHistory()
-  const rowLink = (rid) => {
+  const hyperLink = (rid) => {
     history.push(`./rps/${rid}`)
   }
 
@@ -63,7 +63,7 @@ export default function Rps() {
       }
       fetch('http://localhost:4000/newrps', options)
         .then($ => $.json())
-        .then($ => rowLink(`./${$.rid}`))
+        .then($ => hyperLink(`./${$.rid}`))
     }
   }
 
@@ -74,7 +74,7 @@ export default function Rps() {
         <div className={classes.tableHeadlineButtonSec}>
           {/* <Link to="rps/new"></Link> */}
         <button onClick={() => createNewRpsModal()} className={classes.tableHeadlineButton}>New</button>
-          <button className={classes.tableHeadlineButton}>Archive</button>
+          {/* <button onClick={() => hyperLink('arc')} className={classes.tableHeadlineButton}>Archive</button> */}
         </div>
       </div>
       <TableContainer component={Paper}>
@@ -89,7 +89,7 @@ export default function Rps() {
           </TableHead>
           <TableBody>
           {rpsList.map((row, i) => (
-              <TableRow key={i} onClick={() => {rowLink(`./${row.rid}`)}}>
+              <TableRow key={i} onClick={() => {hyperLink(`./${row.rid}`)}}>
                 <TableCell>{row.title}</TableCell>
                 <TableCell align="right">{row.questions}</TableCell>
                 <TableCell align="right">{row.cDate}</TableCell>
