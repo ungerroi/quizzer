@@ -6,6 +6,7 @@ import Rid from "./Rid"
 import Cid from "./Cid"
 import Eid from "./Eid"
 import Def from "./Def"
+import Lgn from "./Lgn"
 function Adm () {
     return(
         <>
@@ -19,11 +20,12 @@ function Adm () {
                     <Route exact path="/adm/exm" component={Exm} />
                     <Route exact path="/adm/def" component={Def} />
                     <Route exact path="/adm/rps/:rid" component={Rid} />
-                    <Route exact path ="adm/rps/new" component={Rid} />
+                    <Route exact path="adm/rps/new" component={Rid} />
                     <Route exact path="/adm/cnd/:cid" component={Cid} />
-                    <Route exact path ="adm/cnd/new" component={Cid} />
+                    <Route exact path="adm/cnd/new" component={Cid} />
                     <Route exact path="/adm/exm/:eid" component={Eid} />
-                    <Route exact path ="adm/exm/new" component={Eid} />
+                    <Route exact path="adm/exm/new" component={Eid} />
+                    <Route exact path="lgn" component={Lgn} />
                 </Switch>
             </Router>
         </>
